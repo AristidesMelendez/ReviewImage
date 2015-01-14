@@ -76,18 +76,18 @@ Description...
 			<img src="images/imageExample.png" class="img-thumbnail" alt="mock image">
 		</div>
 		<br />
-		<form class="form-group" name="reviewForm">
+		<form class="form-group" name="reviewForm" ng-controller="ReviewController as reviewCtrl">
 			<div class="row">
 			<label>Description: </label><br/>
 		    <textarea class="textarea" type="textarea" maxlength="250" 
 						value="Add small description of the accident"
 						id="description"
 						style="width: 250px; height: 150px;"
-						ng-model="image.description" ng-required="true" ></textarea>
+						ng-model="reviewCtrl.image.description" ng-required="true" ></textarea>
 			</div>
 			<div class="row">
 				<label>Stars: </label>
-				 <select ng-model="image.stars">
+				 <select ng-model="reviewCtrl.image.stars" >
 					<option value="5">5 Stars</option>
 					<option value="4">4 Stars</option>
 					<option value="3">3 Stars</option>
@@ -98,15 +98,16 @@ Description...
 			
 			<div class="row">
 				<label>Client id: </label>
-				<input type="text" value="client id" ng-model="image.clientId" ng-required="true" />
+				<input type="text" value="client id" ng-model="reviewCtrl.image.clientId" ng-required="true" />
 			</div>
 		<br />
 		<div class="row">
-		  <button type="button" class="btn btn-danger ">Reject</button>
-		  <button type="button" class="btn btn-success ">Accept</button>
+		  <button type="button" class="btn btn-danger" ng-click="reviewCtrl.denied(reviewCtrl.image)">Reject</button>
+		  <button type="button" class="btn btn-success" ng-click="reviewCtrl.accept(reviewCtrl.image)">Accept</button>
 		</div>
+		{{ reviewCtrl.image }}
 		</form>
-		{{ image }}
+		
 		
 		
     </div> <!-- /container -->
