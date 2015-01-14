@@ -18,17 +18,17 @@ Description...
 			
 			
 <!DOCTYPE html>
-<html lang="en" ng-app="ReviewImage">
+<html lang="en" ng-app="reviewImage">
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="CoffeeCup Web Editor (www.coffeecup.com)">
     <meta name="description" content="">
     <meta name="keywords" content="">
 	
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/myStyle.css" />
 	
     <title>Review Image</title>
-
+	
   </head>
  <body role="document">
 
@@ -70,41 +70,56 @@ Description...
 	  <div class="page-header">
 		<p>&nbsp;</p>
 	    <div class="row"><h1 class="col-md-12">Image Title</h1></div>
-		
+	  </div><div class="row">
 		<div class="row">
 			<!-- img src="http://dummyimage.com/200x200/000/fff" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera"></div -->
-			<img src="images/imageExample.png" class="img-thumbnail" alt="mock image"></div>
-		<div class="row">
-		  <form class="form-group">
-		    <textarea type="textarea" maxlength="250" value="Add small description of the accident" id="description"></textarea>
-			<p></p>
-			 <select>
-				<option value="5">5 Stars</option>
-				<option value="4">4 Stars</option>
-				<option value="3">3 Stars</option>
-				<option value="2">2 Stars</option>
-				<option value="1">1 Stars</option>
-			</select> 
-			<p/>
-			<input type="text" value="client id" />
-		  </form>
+			<img src="images/imageExample.png" class="img-thumbnail" alt="mock image">
 		</div>
+		<br />
+		<form class="form-group" name="reviewForm">
+			<div class="row">
+			<label>Description: </label><br/>
+		    <textarea class="textarea" type="textarea" maxlength="250" 
+						value="Add small description of the accident"
+						id="description"
+						style="width: 250px; height: 150px;"
+						ng-model="image.description" ng-required="true" ></textarea>
+			</div>
+			<div class="row">
+				<label>Stars: </label>
+				 <select ng-model="image.stars">
+					<option value="5">5 Stars</option>
+					<option value="4">4 Stars</option>
+					<option value="3">3 Stars</option>
+					<option value="2">2 Stars</option>
+					<option value="1">1 Stars</option>
+				</select> 
+			</div>
+			
+			<div class="row">
+				<label>Client id: </label>
+				<input type="text" value="client id" ng-model="image.clientId" ng-required="true" />
+			</div>
+		<br />
 		<div class="row">
 		  <button type="button" class="btn btn-danger ">Reject</button>
 		  <button type="button" class="btn btn-success ">Accept</button>
 		</div>
-	  </div>
-
+		</form>
+		{{ image }}
+		
+		
     </div> <!-- /container -->
 
-
-    <!-- Bootstrap core JavaScript
+<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
 	<script type="text/javascript" src="js/angular.min.js"></script>
-	<script type="text/javascript" src="reviewImage.js"></script>
+	<!-- script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></!script -->
+	<script type="text/javascript" src="ReviewImage.js"></script>
     <!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script -->
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
   </body>
 </html>
