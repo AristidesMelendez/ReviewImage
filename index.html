@@ -66,44 +66,9 @@ Description...
     </nav>
 
     <div class="container theme-showcase" role="main">
-	
-	   <form class="form-group" name="reviewForm" ng-controller="ReviewController as reviewCtrl">
 
-	   	<div class="page-header row"><h1 class="col-md-12">{{ reviewCtrl.image.title }}</h1></div>
-	
-			<div class="row">
-				<!-- img src="http://dummyimage.com/200x200/000/fff" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera"></div -->
-				<img ng-src="{{reviewCtrl.image.url}}" class="img-thumbnail" alt="mock image">
-			</div>
-			<div class="row">
-			<label>Description: </label><br/>
-		    <textarea class="textarea" type="textarea" maxlength="250" 
-						id="description"
-						style="width: 250px; height: 150px;"
-						ng-model="reviewCtrl.image.description" required></textarea>
-			</div>
-			<div class="row">
-				<label>Stars: </label>
-				 <select ng-model="reviewCtrl.image.stars" >
-					<option value="5">5 Stars</option>
-					<option value="4">4 Stars</option>
-					<option value="3">3 Stars</option>
-					<option value="2">2 Stars</option>
-					<option value="1">1 Stars</option>
-				</select> 
-			</div>
-			
-			<div class="row">
-				<label>Client id: </label>
-				<input type="text"  ng-model="reviewCtrl.image.clientId" required/>
-			</div>
-		<br />
-		<div class="row">
-		  <button type="button" class="btn btn-danger" ng-click="reviewForm.$valid && reviewCtrl.denied(reviewCtrl.image)">Reject</button>
-		  <button type="button" class="btn btn-success" ng-click="reviewForm.$valid && reviewCtrl.accept(reviewCtrl.image)">Accept</button>
-		</div>
-		{{ reviewCtrl.image }}
-		</form>	
+		<image-view-form ng-controller="ReviewController as reviewCtrl"></image-view-form>
+
     </div> <!-- /container -->
 
 <!-- Bootstrap core JavaScript

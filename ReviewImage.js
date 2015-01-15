@@ -67,3 +67,14 @@ reviewImage.controller('ReviewController', function(){
 
 	};
 });
+
+reviewImage.directive('imageViewForm', function(){
+	return {
+		retrict: 'E',
+		templateUrl: 'imageViewForm.html'
+		//controller: ReviewController()
+
+	};
+
+	
+});
