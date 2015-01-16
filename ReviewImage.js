@@ -19,7 +19,7 @@ var reviewController = function($http){
 
 		var url = 'https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=17592ab295bfffea2dbfac2566bb9cd0&per_page=20&format=json&nojsoncallback=1';
 
-		$http.get(url, {})
+		$http.get(url)
 		.success(function (data) {
 
 			var photo;
@@ -28,7 +28,7 @@ var reviewController = function($http){
 					description: '',
 					clientId: data.photos.photo[i].owner,
 					title: data.photos.photo[i].title,
-					url: 'https://farm' + data.photos.photo[i].farm + '.staticflickr.com/' + data.photos.photo[i].server + '/' + data.photos.photo[i].id + '_' + data.photos.photo[i].secret + '_n.jpg',
+					url: 'https://farm' + data.photos.photo[i].farm + '.staticflickr.com/' + data.photos.photo[i].server + '/' + data.photos.photo[i].id + '_' + data.photos.photo[i].secret + '_z.jpg',
 					target: 'https://www.flickr.com/photos/' + data.photos.photo[i].owner + '/' + data.photos.photo[i].id
 				};
 
