@@ -1,5 +1,11 @@
 
-<form class="form-group" name="reviewForm">
+<div class="page-header row" ng-show="!reviewCtrl.hasPhotos">
+	<br />
+	<h1>No more photos<h1>
+	<button type="button" class="btn btn-success">Send Report</button>
+</div>
+
+<form class="form-group" name="reviewForm" ng-show="reviewCtrl.hasPhotos">
 
    	<div class="page-header row"><h1 class="col-md-12">{{ reviewCtrl.image.title }}</h1></div>
 
@@ -36,4 +42,4 @@
 	  <button type="button" class="btn btn-success" ng-click="reviewForm.$valid && reviewCtrl.accept(reviewCtrl.image)">Accept</button>
 	</div>
 	{{ reviewCtrl.image }}
-</form>	
+</form>

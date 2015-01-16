@@ -14,6 +14,7 @@ var reviewController = function($http){
 	var count = 0;
 	var review = this;
 	var loadedImages = [];
+	this.hasPhotos = false;
 
 	var fetchImages = function ($http){
 
@@ -37,6 +38,7 @@ var reviewController = function($http){
 
 			console.log('loadedImages: ' + loadedImages.length);
 			review.image = loadedImages[0];
+			review.hasPhotos = true;
 		})
 		.error(function (data){
 			console.log('error in get call.');
@@ -59,6 +61,7 @@ var reviewController = function($http){
 		if(count < (loadedImages.length - 1)){
 			this.image =  loadedImages[++count];
 		} else {
+			review.hasPhotos = false;
 			// last Image reach.
 			this.image = {
 				title: 'End of images',
