@@ -12,71 +12,37 @@ var reviewImage = angular.module('reviewImage', []);
 var reviewController = function($http){
 	
 	var count = 0;
-	this.images = [];
-	var loadedImages = this.images;
+	var loadedImages = [];
+	var initialImage = this.image;
 
 	var fetchImages = function ($http){
 
-		var url = 'https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=17592ab295bfffea2dbfac2566bb9cd0&per_page=20&format=json&jsoncallback=success',
-		    argumentos = { };
+		var url = 'https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=17592ab295bfffea2dbfac2566bb9cd0&per_page=20&format=json&nojsoncallback=1';
 
-		$http.get(url, argumentos)
+		$http.get(url, {})
 		.success(function (data) {
-			var results = data.substring(8,data.length);
-			results = results.substring(0, results.length-1);
-			results = JSON.parse(results);
-			console.log(data.photos);
 
 			var photo;
-			for (var i = results.photos.photo.length - 1; i >= 0; i--) {
+			for (var i = data.photos.photo.length - 1; i >= 0; i--) {
 				photo = {
 					description: '',
-					clientId: results.photos.photo[i].owner,
-					title: results.photos.photo[i].title,
-					url: 'https://farm' + results.photos.photo[i].farm + '.staticflickr.com/' + results.photos.photo[i].server + '/' + results.photos.photo[i].id + '_' + results.photos.photo[i].secret + '_n.jpg'
+					clientId: data.photos.photo[i].owner,
+					title: data.photos.photo[i].title,
+					url: 'https://farm' + data.photos.photo[i].farm + '.staticflickr.com/' + data.photos.photo[i].server + '/' + data.photos.photo[i].id + '_' + data.photos.photo[i].secret + '_n.jpg'
 				};
 
-				
 				loadedImages.push(photo);
-			};
+			}
 
-			//loadedImages = data;
-			return;
+			console.log('loadedImages: ' + loadedImages.length);
+			initialImage = loadedImages[0];
 		})
 		.error(function (data){
 			console.log('error in get call.');
 		});
 	};
-
-	
 	
 	fetchImages($http);
-	this.image = this.images[count];
-	
-	//this.images = [
-	// 	{
-	// 		stars : '5',
-	// 		description : 'Add a description here.',
-	// 		clientId : 'aristides',
-	// 		url: 'http://dummyimage.com/200x200/000/fff',
-	// 		title: 'image 1'
-	// 	},
-	// 	{
-	// 		stars : '3',
-	// 		description : 'Add a description here.',
-	// 		clientId : 'persona2',
-	// 		url: 'http://dummyimage.com/200x200/e90/00f/',
-	// 		title: 'imagen 2'
-	// 	},
-	// 	{
-	// 		stars : '4',
-	// 		description : 'Add a description here.',
-	// 		clientId : 'persona3',
-	// 		url: 'http://dummyimage.com/200x200/00d/000',
-	// 		title: 'immagine 3'
-	// 	}
-	// ];
-
 
 	this.accept = function(image){
 		image.accepted = true;
@@ -89,20 +55,16 @@ var reviewController = function($http){
 	};
 
 	this.nextImage = function(){
-		
-		if(count < (this.images.length - 1)){
-			this.image =  this.images[++count];
+		if(count < (loadedImages.length - 1)){
+			this.image =  loadedImages[++count];
 		} else {
 			// last Image reach.
 			this.image = {
 				title: 'End of images',
-				url: 'http://dummyimage.com/200x200/0f0/f0f',
-				
+				url: 'http://dummyimage.com/200x200/0f0/f0f'
 			}
 		}
-
 	};
-
 };
 
 
@@ -115,7 +77,5 @@ reviewImage.directive('imageViewForm', function(){
 		controller: reviewController,
 		controllerAs: 'reviewCtrl'
 
-	};
-
-	
+	};	
 });
