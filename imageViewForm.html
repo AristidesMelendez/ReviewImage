@@ -4,8 +4,9 @@
    	<div class="page-header row"><h1 class="col-md-12">{{ reviewCtrl.image.title }}</h1></div>
 
 		<div class="row">
-			<!-- img src="http://dummyimage.com/200x200/000/fff" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera"></div -->
-			<img ng-src="{{reviewCtrl.image.url}}" class="img-thumbnail" alt="mock image">
+			<a href="{{reviewCtrl.image.target}}" target="_blank">
+				<img ng-src="{{reviewCtrl.image.url}}" class="img-thumbnail" alt="mock image">
+			</a>
 		</div>
 		<div class="row">
 		<label>Description: </label><br/>

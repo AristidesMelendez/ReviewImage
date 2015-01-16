@@ -28,7 +28,8 @@ var reviewController = function($http){
 					description: '',
 					clientId: data.photos.photo[i].owner,
 					title: data.photos.photo[i].title,
-					url: 'https://farm' + data.photos.photo[i].farm + '.staticflickr.com/' + data.photos.photo[i].server + '/' + data.photos.photo[i].id + '_' + data.photos.photo[i].secret + '_n.jpg'
+					url: 'https://farm' + data.photos.photo[i].farm + '.staticflickr.com/' + data.photos.photo[i].server + '/' + data.photos.photo[i].id + '_' + data.photos.photo[i].secret + '_n.jpg',
+					target: 'https://www.flickr.com/photos/' + data.photos.photo[i].owner + '/' + data.photos.photo[i].id
 				};
 
 				loadedImages.push(photo);
