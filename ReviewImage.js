@@ -12,8 +12,8 @@ var reviewImage = angular.module('reviewImage', []);
 var reviewController = function($http){
 	
 	var count = 0;
+	var review = this;
 	var loadedImages = [];
-	var initialImage = this.image;
 
 	var fetchImages = function ($http){
 
@@ -36,7 +36,7 @@ var reviewController = function($http){
 			}
 
 			console.log('loadedImages: ' + loadedImages.length);
-			initialImage = loadedImages[0];
+			review.image = loadedImages[0];
 		})
 		.error(function (data){
 			console.log('error in get call.');
