@@ -1,6 +1,24 @@
 <div class="page-header row">
 <h1>Report</h1>
 </div>
-<div class="row">
-bla bla bla
+<div class="col-md-4" ng-repeat="image in imagesReviewed" >
+
+		<div>
+			<a href="{{image.target}}" target="_blank">
+				<img ng-src="{{image.thumbnail}}" class="img-thumbnail" alt="mock image">
+			</a>
+		</div>
+		<div>
+			<label>Accepted: {{image.accepted}}</label>
+		</div>
+		<div>
+			<label>Description: {{image.description}}</label>
+		</div>
+		<div>
+			<label>Stars: {{image.stars}}</label>
+		</div>
+		<div>
+			<label>Client id: {{image.clientId}}</label>
+		</div>
+
 </div>

@@ -7,15 +7,33 @@
 
 /* App Module */
 
-var reviewImageApp = angular.module('reviewImageApp', ['reviewControllers']);
+var reviewImageApp = angular.module('reviewImageApp', ['ngRoute','reviewControllers']);
 
 
-reviewImageApp.directive('imageViewForm', function(){
-	return {
-		retrict: 'E',
-		templateUrl: 'views/imageViewForm.html',
-		controller: 'reviewController',
-		controllerAs:  'reviewCtrl'
+// reviewImageApp.directive('imageViewForm', function(){
+// 	return {
+// 		retrict: 'E',
+// 		templateUrl: 'views/imageViewForm.html',
+// 		controller: 'reviewController',
+// 		controllerAs:  'reviewCtrl'
 
-	};	
-});
+// 	};	
+// });
+
+reviewImageApp.config(['$routeProvider', 
+	function($routeProvider) {
+		$routeProvider.
+			when('/', {
+				templateUrl: 'views/imageViewForm.html',
+				controller: 'reviewController',
+				controllerAs: 'reviewCtrl'
+			}).
+			when('/report', {
+				templateUrl: 'views/report.html',
+				controller: 'reportController',
+				controllerAs: 'repoCtrl'
+			}).
+			otherwise({
+				redirectTo: '/'
+			});
+	}]);

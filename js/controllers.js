@@ -3,16 +3,23 @@
 //Controllers
 var reviewControllers = angular.module('reviewControllers',[]);
 
-reviewControllers.controller('reviewController', ['$http', function($http){
+reviewControllers.factory('MyData', function(){
+	return {
+		imagesReviewed: []
+	};
+});
+
+reviewControllers.controller('reviewController', function($http, $scope, MyData){
 	
-	var count = 0;
-	var review = this;
-	var loadedImages = [];
+	var count = 0,
+		review = this;
+	$scope.loadedImages = MyData.imagesReviewed;
 	this.hasPhotos = false;
+	this.finishReviews = false;
 
 	var fetchImages = function ($http){
 
-		var url = 'https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=17592ab295bfffea2dbfac2566bb9cd0&per_page=20&format=json&nojsoncallback=1';
+		var url = 'https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=17592ab295bfffea2dbfac2566bb9cd0&per_page=5&format=json&nojsoncallback=1';
 
 		$http.get(url)
 		.success(function (data) {
@@ -29,11 +36,11 @@ reviewControllers.controller('reviewController', ['$http', function($http){
 					target: 'https://www.flickr.com/photos/' + data.photos.photo[i].owner + '/' + data.photos.photo[i].id
 				};
 
-				loadedImages.push(photo);
+				$scope.loadedImages.push(photo);
 			}
 
-			console.log('loadedImages: ' + loadedImages.length);
-			review.image = loadedImages[0];
+			console.log('$scope.loadedImages: ' + $scope.loadedImages.length);
+			review.image = $scope.loadedImages[0];
 			review.hasPhotos = true;
 		})
 		.error(function (data){
@@ -54,10 +61,11 @@ reviewControllers.controller('reviewController', ['$http', function($http){
 	};
 
 	this.nextImage = function(){
-		if(count < (loadedImages.length - 1)){
-			this.image =  loadedImages[++count];
+		if(count < ($scope.loadedImages.length - 1)){
+			this.image =  $scope.loadedImages[++count];
 		} else {
 			review.hasPhotos = false;
+			review.finishReviews = true;
 			// last Image reach.
 			this.image = {
 				title: 'End of images',
@@ -65,5 +73,12 @@ reviewControllers.controller('reviewController', ['$http', function($http){
 			}
 		}
 	};
-}]);
+});
 
+reviewControllers.controller('reportController', function($scope, MyData){
+	// show image report.
+
+	//console.log('report: ' + MyData.imagesReviewed);
+	$scope.imagesReviewed =  MyData.imagesReviewed;
+
+});
