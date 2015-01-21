@@ -25,11 +25,13 @@ var reviewController = function($http){
 
 			var photo;
 			for (var i = data.photos.photo.length - 1; i >= 0; i--) {
+				var rootUrl = 'https://farm' + data.photos.photo[i].farm + '.staticflickr.com/' + data.photos.photo[i].server + '/' + data.photos.photo[i].id + '_' + data.photos.photo[i].secret;
 				photo = {
 					description: '',
 					clientId: data.photos.photo[i].owner,
 					title: data.photos.photo[i].title,
-					url: 'https://farm' + data.photos.photo[i].farm + '.staticflickr.com/' + data.photos.photo[i].server + '/' + data.photos.photo[i].id + '_' + data.photos.photo[i].secret + '_z.jpg',
+					url: rootUrl + '_z.jpg',
+					thumbnail: rootUrl + '_q.jpg',
 					target: 'https://www.flickr.com/photos/' + data.photos.photo[i].owner + '/' + data.photos.photo[i].id
 				};
 
