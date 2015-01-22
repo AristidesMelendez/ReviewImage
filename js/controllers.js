@@ -19,7 +19,7 @@ reviewControllers.controller('reviewController', function($http, $scope, MyData)
 
 	var fetchImages = function ($http){
 
-		var url = 'https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=17592ab295bfffea2dbfac2566bb9cd0&per_page=5&format=json&nojsoncallback=1';
+		var url = 'https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=17592ab295bfffea2dbfac2566bb9cd0&per_page=9&format=json&nojsoncallback=1';
 
 		$http.get(url)
 		.success(function (data) {
