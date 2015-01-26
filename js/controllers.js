@@ -81,4 +81,8 @@ reviewControllers.controller('reportController', function($scope, MyData){
 	//console.log('report: ' + MyData.imagesReviewed);
 	$scope.imagesReviewed =  MyData.imagesReviewed;
 
+	$scope.sendReport = function (value) {
+		alert('Report send at: ' + new Date());
+	}
+
 });
