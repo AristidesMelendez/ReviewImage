@@ -1,0 +1,15 @@
+{
+  "name": "ReviewImage",
+  "description": "Demo app for learning Angular JS",
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.10.29"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.15",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.6"
+  }
+}
