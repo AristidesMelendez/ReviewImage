@@ -19,6 +19,7 @@ module.exports = function(config) {
       'lib/jquery-1.11.2.js',
       'lib/angular.js',
       'lib/angular-route.js',
+      'node_modules/angular-mocks/angular-mocks.js',
       'ReviewImage.js',
       'js/**/*.js',
       'tests/**/*.js'
