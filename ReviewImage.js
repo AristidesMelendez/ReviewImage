@@ -10,15 +10,15 @@
 var reviewImageApp = angular.module('reviewImageApp', ['ngRoute','reviewControllers']);
 
 
-// reviewImageApp.directive('imageViewForm', function(){
-// 	return {
-// 		retrict: 'E',
-// 		templateUrl: 'views/imageViewForm.html',
-// 		controller: 'reviewController',
-// 		controllerAs:  'reviewCtrl'
+reviewImageApp.directive('arisImageForm', function(){
+	return {
+		retrict: 'E',
+		templateUrl: 'views/aris-image-form.html',
+		controller: 'reviewController',
+		controllerAs:  'reviewCtrl'
 
-// 	};	
-// });
+	};	
+});
 
 reviewImageApp.config(['$routeProvider', 
 	function($routeProvider) {
