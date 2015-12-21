@@ -9,11 +9,5 @@ describe('Review Controllers', function(){
 			expect(MyData).toEqual({imagesReviewed: []});
 		}))
 	});
-
-	describe('test', function() {
-		it('pass no matter what', function(){
-			expect(true).toBeTruthy();
-		});
-	});
 	
 });
