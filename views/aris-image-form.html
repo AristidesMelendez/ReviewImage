@@ -1,10 +1,11 @@
+<h1>Tulio</h1>
 <div class="page-header row">
-	<h1 class="col-md-12">{{ reviewCtrl.image.title }}</h1>
+	<h1 class="col-md-12">{{ image.title }}</h1>
 </div>
 
 <div class="row">
-	<a href="{{reviewCtrl.image.target}}" target="_blank">
-		<img ng-src="{{reviewCtrl.image.url}}" class="img-thumbnail" alt="mock image">
+	<a href="{{image.target}}" target="_blank">
+		<img ng-src="{{image.url}}" class="img-thumbnail" alt="mock image">
 	</a>
 </div>
 <div class="row">
@@ -12,11 +13,11 @@
 <textarea class="textarea" type="textarea" maxlength="250" 
 			id="description"
 			style="width: 250px; height: 150px;"
-			ng-model="reviewCtrl.image.description" required></textarea>
+			ng-model="image.description" required></textarea>
 </div>
 <div class="row">
 	<label>Stars: </label>
-	 <select ng-model="reviewCtrl.image.stars" >
+	 <select ng-model="image.stars" >
 		<option value="5">5 Stars</option>
 		<option value="4">4 Stars</option>
 		<option value="3">3 Stars</option>
@@ -27,5 +28,5 @@
 
 <div class="row">
 	<label>Client id: </label>
-	<input type="text"  ng-model="reviewCtrl.image.clientId" required/>
+	<input type="text"  ng-model="image.clientId" required/>
 </div>

@@ -1,14 +1,14 @@
 
 <div class="page-header row" ng-show="!reviewCtrl.hasPhotos">
 	<br />
-	<h1>No more photos<h1>
+	<h1>No more photos</h1>
 	<!-- button type="button" class="btn btn-success" ng-click="{ redirectTo: '/report' } ">Send Report</button -->
 	<a href="#/report" ng-show="reviewCtrl.finishReviews">Send Report</a>
 </div>
 
 <form class="form-group" name="reviewForm" ng-show="reviewCtrl.hasPhotos">
 
-   	<aris-image-form></aris-image-form>
+   	<aris-image-form image="reviewCtrl.image"></aris-image-form>
 
 	<br />
 	<div class="row">

@@ -14,13 +14,13 @@ reviewImageApp.directive('arisImageForm', function(){
 	return {
 		retrict: 'E',
 		templateUrl: 'views/aris-image-form.html',
-		controller: 'reviewController',
-		controllerAs:  'reviewCtrl'
-
+		scope: {
+			image: '=image'
+		}
 	};	
 });
 
-reviewImageApp.config(['$routeProvider', 
+reviewImageApp.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
 			when('/', {
@@ -36,4 +36,5 @@ reviewImageApp.config(['$routeProvider',
 			otherwise({
 				redirectTo: '/'
 			});
-	}]);
+	}
+]);

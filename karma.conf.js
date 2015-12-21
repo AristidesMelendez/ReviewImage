@@ -17,12 +17,13 @@ module.exports = function(config) {
     // load file in a proper order... 
     files: [
       'lib/jquery-1.11.2.js',
-      'lib/angular.js',
-      'lib/angular-route.js',
+      'node_modules/angular/angular.js',
+      'node_modules/angular-route/angular-route.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'ReviewImage.js',
       'js/**/*.js',
-      'tests/**/*.js'
+      'tests/**/*.js',
+      '**/*.html'
     ],
 
 
@@ -34,6 +35,19 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+         '**/*.html': ['ng-html2js']
+    },
+
+
+    ngHtml2JsPreprocessor: {
+
+      // - you may provide a function(htmlPath, originalPath) instead of a string
+      //   if you'd like to generate modules dynamically
+      //   htmlPath is a originalPath stripped and/or prepended
+      //   with all provided suffixes and prefixes
+      moduleName: function (htmlPath, originalPath) {
+        return htmlPath.split('/')[0];
+      }
     },
 
 
@@ -62,7 +76,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'Firefox'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
