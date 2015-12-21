@@ -25,14 +25,13 @@ describe('directive tests', function() {
           target: 'https://www.flickr.com/photos/photo_owner/photo_id'
       };
 
-      element = compile('<aris-image-form></aris-image-form>')(scope); 
+      element = compile('<aris-image-form image="image"></aris-image-form>')(scope); 
       
       scope.$digest();
-      console.log(element);
-      expect(element.find('h1').text()).toEqual('Tulio');
-      var title = element.find('.page-header h1');
-      expect(title).toBeDefined();
-      //expect(title.text()).toEqual('photo title');
+      
+      var DOMpart = element.find('.page-header h1');
+      expect(DOMpart).toBeDefined();
+      expect(DOMpart.text()).toEqual('photo title');
 
     });
 
