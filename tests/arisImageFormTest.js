@@ -18,7 +18,7 @@ describe('directive tests', function() {
     it('should print a form to evaluate  a photo.', function() {
       scope.image = {
           description: 'photo_description ',
-          clientId: 'photo_owner ',
+          clientId: 'photo_owner',
           title: 'photo title',
           url: 'url_example_z.jpg',
           thumbnail: 'url_example_q.jpg',
@@ -32,6 +32,25 @@ describe('directive tests', function() {
       var DOMpart = element.find('.page-header h1');
       expect(DOMpart).toBeDefined();
       expect(DOMpart.text()).toEqual('photo title');
+
+      DOMpart = element.find('div.row a');
+      expect(DOMpart).toBeDefined();
+
+      DOMpart = element.find('div:eq(2) label');
+      expect(DOMpart).toBeDefined();
+      expect(DOMpart.text()).toEqual('Description: ');
+
+      DOMpart = element.find('div:eq(3) label');
+      expect(DOMpart).toBeDefined();
+      expect(DOMpart.text()).toEqual('Stars: ');
+
+      DOMpart = element.find('div:eq(4) label');
+      expect(DOMpart).toBeDefined();
+      expect(DOMpart.text()).toEqual('Client id: ');
+
+      DOMpart = element.find('div:eq(4) input');
+      expect(DOMpart).toBeDefined();
+      expect(DOMpart.val()).toEqual('photo_owner');
 
     });
 
