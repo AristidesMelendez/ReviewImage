@@ -27,7 +27,7 @@ var fetchImages = function ($http, callback){
 			var photo,
 				images = [],
 				photos = data.photos.photo;
-				
+
 			for (var i = photos.length - 1; i >= 0; i--) {
 				var rootUrl = 'https://farm' + photos[i].farm + '.staticflickr.com/' + photos[i].server + '/' + photos[i].id + '_' + photos[i].secret;
 				photo = {
@@ -61,7 +61,7 @@ reviewControllers.controller('reviewController', function($http, $scope, MyData)
 	this.finishReviews = false;
 	
 	fetchImages($http, function(hasPhotos, images) {
-		$scope.loadedImages = images;
+		$scope.loadedImages.push.apply($scope.loadedImages, images);
 		review.hasPhotos = hasPhotos;
 		if(images.length > 0){
 			review.image = $scope.loadedImages[0];
@@ -97,7 +97,7 @@ reviewControllers.controller('reviewController', function($http, $scope, MyData)
 reviewControllers.controller('reportController', function($scope, MyData){
 	// show image report.
 
-	//console.log('report: ' + MyData.imagesReviewed);
+	console.log('report, number of images: ' + MyData.imagesReviewed.length);
 	$scope.imagesReviewed =  MyData.imagesReviewed;
 
 	$scope.sendReport = function (value) {
