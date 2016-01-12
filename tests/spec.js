@@ -1,15 +1,14 @@
+// var properties = require(__dirname + '/../flickr-key.json');
+// console.log(properties);
+
 describe('Protractor Demo App', function() {
   it('should have a title', function() {
-    browser.get('http://juliemr.github.io/protractor-demo/');
     
-    expect(browser.getTitle()).toEqual('Super Calculator');
+    browser.get('https://aristidesmelendez.github.io/');
 
-    element(by.model('first')).sendKeys(1);
-    element(by.model('second')).sendKeys(2);
+    expect(browser.getTitle()).toEqual('Review Image');
+    expect(element(by.css("div.noPhotos h1")).getWebElement().getText()).toEqual('');
+    expect(element(by.css(".container div.page-header h1.col-md-12")).getWebElement().getText()).not.toEqual('No more photos');
 
-    element(by.id('gobutton')).click();
-
-    expect(element(by.binding('latest')).getText()).
-        toEqual('5'); // This is wrong!
   });
 });
