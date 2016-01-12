@@ -14,7 +14,7 @@ reviewControllers.factory('MyData', function(){
 var fetchImages = function ($http, callback){
 	
 	// First get properties file.
-	$http.get('flickr-key').then(function (properties){
+	$http.get('flickr-key.json').then(function (properties){
 
 		var quantity = properties.data.quantity,
 			api_key = properties.data["flickr key"],
