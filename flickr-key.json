@@ -1,7 +1,7 @@
 {
 	"quantity": 3,
-	"flickrKey": "",
-	"secret": "",
+	"flickrKey": "17592ab295bfffea2dbfac2566bb9cd0",
+	"secret": "el secreto",
 	"endpoint": "https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&",
 	"format":"json&nojsoncallback=1"
 }
