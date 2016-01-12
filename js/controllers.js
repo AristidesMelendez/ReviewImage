@@ -17,8 +17,10 @@ var fetchImages = function ($http, callback){
 	$http.get('flickr-key.json').then(function (properties){
 
 		var quantity = properties.data.quantity,
-			api_key = properties.data["flickr key"],
-			url = 'https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key='+api_key+'&per_page=' + quantity + '&format=json&nojsoncallback=1';
+			api_key = properties.data.flickrKey,
+			endpoint = properties.data.endpoint,
+			format = properties.data.format,
+			url = endpoint + 'api_key=' + api_key + '&per_page=' + quantity + '&format=' + format;
 
 		// make GET call
 		$http.get(url)
